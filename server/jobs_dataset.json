@@ -1,0 +1,482 @@
+[
+  {
+    "title": "Data Entry Operator",
+    "company": "TechAssist India",
+    "type": "Work from Home",
+    "pay": "₹12,000/mo",
+    "icon": "💻",
+    "description": "Enter and organize data in databases and spreadsheets. Basic computer knowledge required. Perfect for beginners looking to start their career in IT. Work from the comfort of your home with flexible hours.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Data Entry", "Remote", "Beginner"],
+    "status": "active",
+    "requirements": [
+      "Basic computer knowledge",
+      "Good typing speed (30+ WPM)",
+      "Attention to detail",
+      "Internet connection"
+    ],
+    "benefits": [
+      "Work from home",
+      "Flexible hours",
+      "Training provided",
+      "Performance bonuses"
+    ]
+  },
+  {
+    "title": "Tailoring Instructor",
+    "company": "NGO Craft Hub",
+    "type": "Part-time · Local",
+    "pay": "₹8,500/mo",
+    "icon": "🧵",
+    "description": "Teach basic tailoring and stitching skills to women in the community. Help empower other women through skill development. Must have experience in tailoring and teaching.",
+    "location": "Mumbai, Maharashtra",
+    "duration": "Part-time",
+    "tags": ["Teaching", "Tailoring", "Local", "NGO"],
+    "status": "active",
+    "requirements": [
+      "Experience in tailoring (2+ years)",
+      "Good communication skills",
+      "Patience in teaching",
+      "Own sewing machine preferred"
+    ],
+    "benefits": [
+      "Rewarding work",
+      "Community impact",
+      "Flexible schedule",
+      "Materials provided"
+    ]
+  },
+  {
+    "title": "Online Tutor (Hindi)",
+    "company": "EduBridge",
+    "type": "Freelance",
+    "pay": "₹350/hr",
+    "icon": "📚",
+    "description": "Teach Hindi language to international students online. Set your own hours and work from anywhere. Great opportunity for language enthusiasts and teachers.",
+    "location": "Remote",
+    "duration": "Flexible",
+    "tags": ["Teaching", "Hindi", "Freelance", "Online"],
+    "status": "active",
+    "requirements": [
+      "Fluent in Hindi and English",
+      "Teaching experience preferred",
+      "Good internet connection",
+      "Webcam and microphone"
+    ],
+    "benefits": [
+      "Set your own hours",
+      "Work from anywhere",
+      "Good hourly rate",
+      "International students"
+    ]
+  },
+  {
+    "title": "Customer Support Executive",
+    "company": "BizHelp Services",
+    "type": "Work from Home",
+    "pay": "₹10,000/mo",
+    "icon": "☎️",
+    "description": "Handle customer inquiries via phone and email. Training provided for all new hires. Great communication skills required. Opportunities for growth within the company.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Support", "Remote", "Beginner", "Communication"],
+    "status": "active",
+    "requirements": [
+      "Good communication skills",
+      "Basic computer knowledge",
+      "Patient and helpful attitude",
+      "Quiet workspace at home"
+    ],
+    "benefits": [
+      "Training provided",
+      "Work from home",
+      "Career growth",
+      "Monthly incentives"
+    ]
+  },
+  {
+    "title": "Content Writer",
+    "company": "WordSmith Digital",
+    "type": "Freelance",
+    "pay": "₹300-500/article",
+    "icon": "✍️",
+    "description": "Write articles and blog posts on social issues, women's empowerment, and lifestyle topics. Work from anywhere. Build your portfolio while earning.",
+    "location": "Remote",
+    "duration": "Flexible",
+    "tags": ["Writing", "Creative", "Freelance", "Remote"],
+    "status": "active",
+    "requirements": [
+      "Good writing skills in English/Hindi",
+      "Research abilities",
+      "Meet deadlines",
+      "Original content"
+    ],
+    "benefits": [
+      "Flexible schedule",
+      "Work from anywhere",
+      "Build portfolio",
+      "Per-article payment"
+    ]
+  },
+  {
+    "title": "Beautician",
+    "company": "Glow Studios",
+    "type": "Part-time · Local",
+    "pay": "₹6,000-8,000/mo",
+    "icon": "💄",
+    "description": "Provide beauty and skincare services to clients. Salon will provide all materials and products. Great opportunity for certified beauticians.",
+    "location": "Delhi, India",
+    "duration": "Part-time",
+    "tags": ["Beauty", "Local", "Skilled", "Part-time"],
+    "status": "active",
+    "requirements": [
+      "Beautician certification",
+      "Experience in salon work",
+      "Good customer service",
+      "Knowledge of beauty products"
+    ],
+    "benefits": [
+      "Materials provided",
+      "Tips from clients",
+      "Flexible timing",
+      "Training updates"
+    ]
+  },
+  {
+    "title": "Handicraft Designer",
+    "company": "Artisan Collective",
+    "type": "Work from Home",
+    "pay": "₹15,000/mo",
+    "icon": "🎨",
+    "description": "Design and create handicraft products for online marketplace. Perfect for creative women with handicraft skills. Materials and tools provided.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Creative", "Handicraft", "Remote", "Art"],
+    "status": "active",
+    "requirements": [
+      "Handicraft experience",
+      "Creative design skills",
+      "Quality workmanship",
+      "Meet production targets"
+    ],
+    "benefits": [
+      "Materials provided",
+      "Work from home",
+      "Creative freedom",
+      "National exposure"
+    ]
+  },
+  {
+    "title": "Social Media Manager",
+    "company": "Women Empower NGO",
+    "type": "Part-time · Local",
+    "pay": "₹9,000/mo",
+    "icon": "📱",
+    "description": "Manage social media accounts for women's empowerment NGO. Create content, engage with followers, and spread awareness about women's issues.",
+    "location": "Bangalore, Karnataka",
+    "duration": "Part-time",
+    "tags": ["Social Media", "NGO", "Marketing", "Part-time"],
+    "status": "active",
+    "requirements": [
+      "Social media experience",
+      "Content creation skills",
+      "Knowledge of canva/design tools",
+      "Passion for women's rights"
+    ],
+    "benefits": [
+      "Meaningful work",
+      "Flexible hours",
+      "Remote work options",
+      "Networking opportunities"
+    ]
+  },
+  {
+    "title": "Home Baker",
+    "company": "Sweet Delights",
+    "type": "Freelance",
+    "pay": "₹400-800/order",
+    "icon": "🧁",
+    "description": "Bake cakes, cookies, and pastries from home for local orders. Perfect for passionate bakers wanting to start their own business.",
+    "location": "Pune, Maharashtra",
+    "duration": "Flexible",
+    "tags": ["Baking", "Freelance", "Food", "Home-based"],
+    "status": "active",
+    "requirements": [
+      "Baking skills and experience",
+      "Own baking equipment",
+      "FSSAI license (or willing to get)",
+      "Delivery arrangement"
+    ],
+    "benefits": [
+      "Work from home",
+      "Set your prices",
+      "Build your business",
+      "Marketing support"
+    ]
+  },
+  {
+    "title": "Virtual Assistant",
+    "company": "Remote Solutions",
+    "type": "Work from Home",
+    "pay": "₹11,000/mo",
+    "icon": "💼",
+    "description": "Provide administrative support to businesses remotely. Tasks include email management, scheduling, data entry, and customer communication.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Admin", "Remote", "Virtual", "Support"],
+    "status": "active",
+    "requirements": [
+      "Good organizational skills",
+      "Computer proficiency",
+      "Excellent communication",
+      "Time management"
+    ],
+    "benefits": [
+      "Work from home",
+      "International clients",
+      "Skill development",
+      "Growth opportunities"
+    ]
+  },
+  {
+    "title": "Yoga Instructor",
+    "company": "Wellness Studio",
+    "type": "Part-time · Local",
+    "pay": "₹7,000-10,000/mo",
+    "icon": "🧘‍♀️",
+    "description": "Teach yoga classes to women of all ages. Morning and evening batches available. Certification required.",
+    "location": "Hyderabad, Telangana",
+    "duration": "Part-time",
+    "tags": ["Fitness", "Yoga", "Teaching", "Health"],
+    "status": "active",
+    "requirements": [
+      "Certified yoga instructor",
+      "Teaching experience",
+      "Good communication",
+      "Passion for wellness"
+    ],
+    "benefits": [
+      "Flexible schedule",
+      "Health benefits",
+      "Growing community",
+      "Studio provided"
+    ]
+  },
+  {
+    "title": "Tele-counselor",
+    "company": "Women's Helpline",
+    "type": "Work from Home",
+    "pay": "₹13,000/mo",
+    "icon": "🗣️",
+    "description": "Provide counseling and support to women in distress over phone and chat. Training in counseling techniques provided. Must be empathetic and patient.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Counseling", "Remote", "Social Work", "Support"],
+    "status": "active",
+    "requirements": [
+      "Psychology/counseling background preferred",
+      "Excellent listening skills",
+      "Empathetic nature",
+      "Confidentiality"
+    ],
+    "benefits": [
+      "Meaningful impact",
+      "Work from home",
+      "Training provided",
+      "Supportive environment"
+    ]
+  },
+  {
+    "title": "Mehndi Artist",
+    "company": "Bridal Studio",
+    "type": "Freelance",
+    "pay": "₹1,000-3,000/event",
+    "icon": "✋",
+    "description": "Apply mehndi for weddings, festivals, and events. Flexible schedule and good earnings during wedding season.",
+    "location": "Jaipur, Rajasthan",
+    "duration": "Flexible",
+    "tags": ["Art", "Freelance", "Mehndi", "Events"],
+    "status": "active",
+    "requirements": [
+      "Mehndi application skills",
+      "Own designs portfolio",
+      "Reliable and punctual",
+      "Own materials"
+    ],
+    "benefits": [
+      "High earning potential",
+      "Flexible schedule",
+      "Creative work",
+      "Seasonal bonuses"
+    ]
+  },
+  {
+    "title": "Online Survey Taker",
+    "company": "Opinion Matters",
+    "type": "Work from Home",
+    "pay": "₹5,000-8,000/mo",
+    "icon": "📊",
+    "description": "Participate in online surveys and market research studies. Simple work that can be done in spare time. Payment per survey completed.",
+    "location": "Remote",
+    "duration": "Flexible",
+    "tags": ["Survey", "Remote", "Easy", "Flexible"],
+    "status": "active",
+    "requirements": [
+      "Internet connection",
+      "Basic English knowledge",
+      "Honest responses",
+      "Regular participation"
+    ],
+    "benefits": [
+      "Work anytime",
+      "No experience needed",
+      "Easy tasks",
+      "Weekly payments"
+    ]
+  },
+  {
+    "title": "Cooking Instructor",
+    "company": "Culinary Academy",
+    "type": "Part-time · Local",
+    "pay": "₹8,000/mo",
+    "icon": "👩‍🍳",
+    "description": "Teach cooking classes focusing on regional Indian cuisine. Share your culinary expertise with aspiring cooks.",
+    "location": "Chennai, Tamil Nadu",
+    "duration": "Part-time",
+    "tags": ["Cooking", "Teaching", "Food", "Local"],
+    "status": "active",
+    "requirements": [
+      "Cooking expertise",
+      "Teaching ability",
+      "Recipe knowledge",
+      "Hygiene standards"
+    ],
+    "benefits": [
+      "Share your passion",
+      "Flexible hours",
+      "Kitchen provided",
+      "Ingredient reimbursement"
+    ]
+  },
+  {
+    "title": "Translation Services",
+    "company": "LinguaBridge",
+    "type": "Freelance",
+    "pay": "₹250-400/page",
+    "icon": "🌐",
+    "description": "Translate documents between English and regional languages. Work on your own schedule from anywhere.",
+    "location": "Remote",
+    "duration": "Flexible",
+    "tags": ["Translation", "Freelance", "Language", "Remote"],
+    "status": "active",
+    "requirements": [
+      "Fluency in 2+ languages",
+      "Translation experience",
+      "Attention to detail",
+      "Meet deadlines"
+    ],
+    "benefits": [
+      "Work from anywhere",
+      "Flexible schedule",
+      "Per-page payment",
+      "Diverse content"
+    ]
+  },
+  {
+    "title": "Receptionist",
+    "company": "Women's Health Clinic",
+    "type": "Full-time · Office",
+    "pay": "₹10,000/mo",
+    "icon": "🏥",
+    "description": "Manage front desk at women's health clinic. Greet patients, schedule appointments, and handle administrative tasks.",
+    "location": "Kolkata, West Bengal",
+    "duration": "Full-time",
+    "tags": ["Reception", "Healthcare", "Office", "Admin"],
+    "status": "active",
+    "requirements": [
+      "Good communication",
+      "Computer basics",
+      "Professional demeanor",
+      "Multitasking ability"
+    ],
+    "benefits": [
+      "Regular hours",
+      "Professional environment",
+      "Health insurance",
+      "Career growth"
+    ]
+  },
+  {
+    "title": "Childcare Provider",
+    "company": "Little Angels Daycare",
+    "type": "Part-time · Local",
+    "pay": "₹7,500/mo",
+    "icon": "👶",
+    "description": "Care for children aged 2-6 years at daycare center. Must love working with children and have patience.",
+    "location": "Ahmedabad, Gujarat",
+    "duration": "Part-time",
+    "tags": ["Childcare", "Local", "Education", "Part-time"],
+    "status": "active",
+    "requirements": [
+      "Love for children",
+      "Patience and care",
+      "First aid knowledge preferred",
+      "Background verification"
+    ],
+    "benefits": [
+      "Rewarding work",
+      "Fixed schedule",
+      "Safe environment",
+      "Training provided"
+    ]
+  },
+  {
+    "title": "Graphic Designer",
+    "company": "Creative Hub",
+    "type": "Freelance",
+    "pay": "₹500-1,500/design",
+    "icon": "🎨",
+    "description": "Create graphics, social media posts, and marketing materials for small businesses and startups.",
+    "location": "Remote",
+    "duration": "Flexible",
+    "tags": ["Design", "Freelance", "Creative", "Remote"],
+    "status": "active",
+    "requirements": [
+      "Graphic design skills",
+      "Adobe/Canva proficiency",
+      "Creative thinking",
+      "Portfolio required"
+    ],
+    "benefits": [
+      "Work from anywhere",
+      "Build portfolio",
+      "Multiple clients",
+      "Creative freedom"
+    ]
+  },
+  {
+    "title": "Embroidery Artist",
+    "company": "Heritage Crafts",
+    "type": "Work from Home",
+    "pay": "₹12,000-18,000/mo",
+    "icon": "🧵",
+    "description": "Create embroidered products for fashion brand. Traditional and modern embroidery work. Materials provided.",
+    "location": "Remote",
+    "duration": "Full-time",
+    "tags": ["Embroidery", "Craft", "Art", "Home-based"],
+    "status": "active",
+    "requirements": [
+      "Embroidery expertise",
+      "Quality workmanship",
+      "Meet deadlines",
+      "Traditional techniques"
+    ],
+    "benefits": [
+      "Work from home",
+      "Materials provided",
+      "Preserve tradition",
+      "Fair compensation"
+    ]
+  }
+]

@@ -1,0 +1,446 @@
+[
+  {
+    "schemeId": "pmv",
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "category": "Health",
+    "lifeStage": ["pregnant", "mother"],
+    "state": "All India",
+    "icon": "🤰",
+    "benefit": "₹5,000 cash in 3 installments",
+    "eligibility": [
+      "Pregnant women & lactating mothers",
+      "First live birth",
+      "Age 19+"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Bank Account",
+      "MCP Card",
+      "Pregnancy Certificate"
+    ],
+    "description": "Direct cash transfer to bank account for health and nutrition during pregnancy and after delivery.",
+    "howToApply": "Apply at Anganwadi Center or online via PMMVY portal",
+    "website": "https://wcd.nic.in/schemes/pradhan-mantri-matru-vandana-yojana",
+    "status": "active"
+  },
+  {
+    "schemeId": "jssk",
+    "name": "Janani Shishu Suraksha Karyakram (JSSK)",
+    "category": "Health",
+    "lifeStage": ["pregnant", "mother"],
+    "state": "All India",
+    "icon": "🏥",
+    "benefit": "Free delivery & child care up to 1 year",
+    "eligibility": [
+      "All pregnant women",
+      "Newborn babies up to 1 year"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Any government ID"
+    ],
+    "description": "Free delivery, medicines, diagnostics, blood transfusion, and transport for pregnant women.",
+    "howToApply": "Visit any government hospital. No registration needed.",
+    "website": "https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=841",
+    "status": "active"
+  },
+  {
+    "schemeId": "pmsma",
+    "name": "Pradhan Mantri Surakshit Matritva Abhiyan (PMSMA)",
+    "category": "Health",
+    "lifeStage": ["pregnant"],
+    "state": "All India",
+    "icon": "🩺",
+    "benefit": "Free antenatal check-ups on 9th of every month",
+    "eligibility": [
+      "Pregnant women in 2nd & 3rd trimester (3-9 months)"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "MCP Card"
+    ],
+    "description": "Free comprehensive antenatal care on 9th of every month at all government health facilities.",
+    "howToApply": "Visit nearest government health center on 9th of any month",
+    "website": "https://pmsma.nhp.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "kasturba",
+    "name": "Kasturba Gandhi Balika Vidyalaya (KGBV)",
+    "category": "Education",
+    "lifeStage": ["unmarried", "young"],
+    "state": "All India",
+    "icon": "📚",
+    "benefit": "Free residential schooling for girls (Class 6-12)",
+    "eligibility": [
+      "Girls from SC, ST, OBC, Muslim minority",
+      "Economically weaker sections"
+    ],
+    "documents": [
+      "School records",
+      "Caste certificate",
+      "Income certificate"
+    ],
+    "description": "Residential schools providing free education, boarding, and lodging for underprivileged girls.",
+    "howToApply": "Contact District Education Officer or nearby KGBV school",
+    "website": "https://kgbv.nic.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "step",
+    "name": "Support to Training and Employment Programme (STEP)",
+    "category": "Skill Development",
+    "lifeStage": ["unmarried", "married", "widow"],
+    "state": "All India",
+    "icon": "💼",
+    "benefit": "Free skill training + job placement assistance",
+    "eligibility": [
+      "Women above 16 years",
+      "Preference to women heads of families"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Educational certificates",
+      "Income certificate"
+    ],
+    "description": "Skill training in sectors like agriculture, textiles, electronics, IT, hospitality for employment.",
+    "howToApply": "Apply through State Women Development Corporations",
+    "website": "https://wcd.nic.in/schemes/support-training-and-employment-programme-women-step",
+    "status": "active"
+  },
+  {
+    "schemeId": "cbse-single-girl",
+    "name": "CBSE Single Girl Child Scholarship",
+    "category": "Education",
+    "lifeStage": ["unmarried", "young"],
+    "state": "All India",
+    "icon": "🎓",
+    "benefit": "₹500/month for 2 years (Class 11-12)",
+    "eligibility": [
+      "Only child in family",
+      "Studying in CBSE school",
+      "Class 10 passed with 60%+"
+    ],
+    "documents": [
+      "Single girl child certificate",
+      "Class 10 marksheet",
+      "School certificate"
+    ],
+    "description": "Monthly scholarship for single girl children to encourage education.",
+    "howToApply": "Apply online via CBSE Scholarship portal",
+    "website": "https://cbse.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "widow-pension",
+    "name": "National Widow Pension Scheme",
+    "category": "Finance",
+    "lifeStage": ["widow"],
+    "state": "All India",
+    "icon": "💰",
+    "benefit": "₹300-₹1,000/month (varies by state)",
+    "eligibility": [
+      "Widow women aged 40-59 years",
+      "BPL families",
+      "No regular income"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Death certificate of husband",
+      "BPL card",
+      "Bank passbook"
+    ],
+    "description": "Monthly pension to support widows living below poverty line.",
+    "howToApply": "Apply at Tehsil/Block office or online via state portal",
+    "website": "Varies by state",
+    "status": "active"
+  },
+  {
+    "schemeId": "widow-scholarship",
+    "name": "Widow Daughter Scholarship Scheme",
+    "category": "Education",
+    "lifeStage": ["unmarried"],
+    "state": "Various States",
+    "icon": "📖",
+    "benefit": "₹2,000-₹5,000/year for education",
+    "eligibility": [
+      "Daughter of widow mother",
+      "Studying in recognized institution"
+    ],
+    "documents": [
+      "Death certificate of father",
+      "Income certificate",
+      "Educational documents"
+    ],
+    "description": "Financial assistance for education of daughters of widow mothers.",
+    "howToApply": "Apply via state social welfare department",
+    "website": "Varies by state",
+    "status": "active"
+  },
+  {
+    "schemeId": "pmay",
+    "name": "Pradhan Mantri Awas Yojana - Women Ownership",
+    "category": "Housing",
+    "lifeStage": ["married", "widow", "single"],
+    "state": "All India",
+    "icon": "🏠",
+    "benefit": "₹1.2-₹2.67 lakh subsidy + priority to women",
+    "eligibility": [
+      "No pucca house",
+      "Family income below limits",
+      "Priority if house in woman's name"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Income certificate",
+      "Property documents",
+      "Bank account"
+    ],
+    "description": "Subsidy for building/buying house. Extra preference given if property is in woman's name.",
+    "howToApply": "Apply online at pmayg.nic.in or pmaymis.gov.in",
+    "website": "https://pmayg.nic.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "mudra-yojana",
+    "name": "Pradhan Mantri MUDRA Yojana - Women",
+    "category": "Finance",
+    "lifeStage": ["married", "unmarried", "widow"],
+    "state": "All India",
+    "icon": "🏦",
+    "benefit": "Business loan up to ₹10 lakh at low interest",
+    "eligibility": [
+      "Women entrepreneurs",
+      "Small business/startup",
+      "No collateral needed"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Business plan",
+      "Bank account",
+      "Address proof"
+    ],
+    "description": "Collateral-free loans to women for starting or expanding small businesses.",
+    "howToApply": "Apply at any bank or NBFC offering MUDRA loans",
+    "website": "https://www.mudra.org.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "sukanya",
+    "name": "Sukanya Samriddhi Yojana",
+    "category": "Finance",
+    "lifeStage": ["mother"],
+    "state": "All India",
+    "icon": "💎",
+    "benefit": "7.6% interest + tax benefits on deposits",
+    "eligibility": [
+      "Girl child below 10 years",
+      "One account per girl child"
+    ],
+    "documents": [
+      "Birth certificate of girl",
+      "Parent's Aadhaar",
+      "Address proof"
+    ],
+    "description": "Savings scheme for girl child's education and marriage. Highest interest among government schemes.",
+    "howToApply": "Open account at any post office or authorized bank",
+    "website": "https://www.nsiindia.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "stand-up",
+    "name": "Stand Up India - Women Entrepreneurs",
+    "category": "Finance",
+    "lifeStage": ["married", "unmarried", "widow"],
+    "state": "All India",
+    "icon": "💪",
+    "benefit": "₹10 lakh - ₹1 crore loan for women-owned businesses",
+    "eligibility": [
+      "Women entrepreneurs",
+      "Starting manufacturing/service/trading business"
+    ],
+    "documents": [
+      "Business plan",
+      "Aadhaar Card",
+      "Educational/skill certificates",
+      "Bank account"
+    ],
+    "description": "Loans for women to start greenfield enterprises in manufacturing, services or trading sector.",
+    "howToApply": "Apply through Stand Up India portal or bank branch",
+    "website": "https://www.standupmitra.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "mahila-swasthya",
+    "name": "Mahila Swasthya Evam Poshan (Women's Health)",
+    "category": "Health",
+    "lifeStage": ["all"],
+    "state": "All India",
+    "icon": "🏥",
+    "benefit": "Free health check-ups & nutrition support",
+    "eligibility": [
+      "All women",
+      "Focus on adolescent girls, pregnant women, lactating mothers"
+    ],
+    "documents": [
+      "Aadhaar Card"
+    ],
+    "description": "Regular health screenings, nutrition counseling, and supplements for women and girls.",
+    "howToApply": "Visit nearest Anganwadi Center or Primary Health Center",
+    "website": "https://wcd.nic.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "one-stop",
+    "name": "One Stop Centre (Sakhi)",
+    "category": "Safety",
+    "lifeStage": ["all"],
+    "state": "All India",
+    "icon": "🛡️",
+    "benefit": "Free support for violence affected women - shelter, legal aid, counseling",
+    "eligibility": [
+      "Women affected by violence",
+      "In crisis situation"
+    ],
+    "documents": [
+      "Any ID proof (Aadhaar/Voter ID)"
+    ],
+    "description": "Integrated support services including temporary shelter, police, legal, medical and counseling.",
+    "howToApply": "Call 181 Women Helpline or visit District OSC",
+    "website": "https://wcd.nic.in/schemes/one-stop-centre-scheme-1",
+    "status": "active"
+  },
+  {
+    "schemeId": "legal-aid",
+    "name": "Free Legal Aid to Women",
+    "category": "Legal",
+    "lifeStage": ["all"],
+    "state": "All India",
+    "icon": "⚖️",
+    "benefit": "Free legal services & representation",
+    "eligibility": [
+      "Women with annual income below ₹3 lakh",
+      "In distress/facing violence"
+    ],
+    "documents": [
+      "Income certificate",
+      "ID proof"
+    ],
+    "description": "Free legal advice, drafting of documents, and representation in court for eligible women.",
+    "howToApply": "Contact District Legal Services Authority (DLSA) or call 15100",
+    "website": "https://nalsa.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "nrlm",
+    "name": "National Rural Livelihood Mission (Women SHGs)",
+    "category": "Skill Development",
+    "lifeStage": ["married", "widow"],
+    "state": "All India",
+    "icon": "👥",
+    "benefit": "SHG formation, skill training, credit linkage, market access",
+    "eligibility": [
+      "Rural women",
+      "Willing to form/join Self Help Groups"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Bank account",
+      "Address proof"
+    ],
+    "description": "Organizes rural women into Self Help Groups for skill training and economic activities.",
+    "howToApply": "Contact Block Development Officer or NRLM Mission office",
+    "website": "https://nrlm.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "senior-pension",
+    "name": "Indira Gandhi National Old Age Pension",
+    "category": "Finance",
+    "lifeStage": ["senior"],
+    "state": "All India",
+    "icon": "👵",
+    "benefit": "₹200-₹500/month for women 60+",
+    "eligibility": [
+      "Women aged 60+ (increased amount for 80+)",
+      "BPL families"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "Age proof",
+      "BPL card",
+      "Bank account"
+    ],
+    "description": "Monthly pension for elderly women from poor families.",
+    "howToApply": "Apply at Panchayat office or online via state portal",
+    "website": "https://nsap.nic.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "bbbp",
+    "name": "Beti Bachao Beti Padhao",
+    "category": "Education",
+    "lifeStage": ["young", "unmarried"],
+    "state": "All India",
+    "icon": "👧",
+    "benefit": "Education support + awareness campaigns",
+    "eligibility": [
+      "Girl child",
+      "All families"
+    ],
+    "documents": [
+      "Birth certificate",
+      "Aadhaar Card"
+    ],
+    "description": "Campaign to prevent gender-biased sex selection and ensure education for girl children.",
+    "howToApply": "Visit nearest Anganwadi or government school",
+    "website": "https://wcd.nic.in/bbbp-schemes",
+    "status": "active"
+  },
+  {
+    "schemeId": "ujjwala",
+    "name": "Ujjwala Yojana - Women Priority",
+    "category": "Housing",
+    "lifeStage": ["married", "widow"],
+    "state": "All India",
+    "icon": "🔥",
+    "benefit": "Free LPG connection + subsidy",
+    "eligibility": [
+      "BPL families",
+      "Priority to women applicants"
+    ],
+    "documents": [
+      "Aadhaar Card",
+      "BPL card",
+      "Address proof",
+      "Bank account"
+    ],
+    "description": "Free LPG connections to BPL households with priority to women for clean cooking fuel.",
+    "howToApply": "Apply at nearest LPG distributor or online",
+    "website": "https://pmuy.gov.in/",
+    "status": "active"
+  },
+  {
+    "schemeId": "working-women-hostel",
+    "name": "Working Women Hostel Scheme",
+    "category": "Housing",
+    "lifeStage": ["unmarried", "single"],
+    "state": "All India",
+    "icon": "🏢",
+    "benefit": "Affordable hostel accommodation for working women",
+    "eligibility": [
+      "Working women",
+      "Students",
+      "Trainees away from home"
+    ],
+    "documents": [
+      "Employment letter",
+      "ID proof",
+      "Income certificate"
+    ],
+    "description": "Safe and affordable hostel accommodation for working women, students and trainees.",
+    "howToApply": "Apply through State Women Development Corporation",
+    "website": "https://wcd.nic.in/schemes/working-women-hostel",
+    "status": "active"
+  }
+]
