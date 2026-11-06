@@ -1,19 +1,26 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
-require("dotenv").config();
 
 // ✅ INITIALIZE EXPRESS APP
 const app = express();
 
 // ✅ MIDDLEWARE
-app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:5173"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "http://127.0.0.1:5173",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,52 +28,49 @@ app.use(express.urlencoded({ extended: true }));
 // ✅ STATIC FILES - Serve uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// ✅ MONGODB CONNECTION (DO THIS FIRST - BEFORE IMPORTING MODELS)
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/sakhi-support";
+// ✅ MONGODB URI (.env mein MONGODB_URI ya MONGO_URI, dono chalenge)
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  process.env.MONGO_URI ||
+  "mongodb://127.0.0.1:27017/sakhi-support";
+
+// Password hide karke print karne ke liye
+const maskedUri = MONGODB_URI.replace(/\/\/([^:]+):([^@]+)@/, "//$1:***@");
 
 console.log("\n" + "=".repeat(70));
 console.log("🚀 SAKHI SUPPORT SERVER INITIALIZATION");
 console.log("=".repeat(70));
-console.log(`📍 MongoDB URI: ${MONGODB_URI}`);
+console.log(`📍 MongoDB URI: ${maskedUri}`);
 
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log("✅ MongoDB Connected successfully");
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB Connection Error:", err.message);
-    process.exit(1);
-  });
+if (!process.env.JWT_SECRET) {
+  console.warn("⚠️  JWT_SECRET .env mein set nahi hai!");
+}
 
 // ✅ HEALTH CHECK ENDPOINT (before routes)
 app.get("/api/health", (req, res) => {
   res.json({
     status: "✓ Server is running",
     timestamp: new Date().toISOString(),
-    mongodb: mongoose.connection.readyState === 1 ? "✓ Connected" : "✗ Disconnected"
+    mongodb:
+      mongoose.connection.readyState === 1 ? "✓ Connected" : "✗ Disconnected",
   });
 });
 
-// ✅ IMPORT AND REGISTER ROUTES (MODELS ARE IMPORTED INSIDE ROUTES)
+// ✅ IMPORT AND REGISTER ROUTES
 console.log("\n📌 Registering Routes...");
 
-// Auth Routes
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 console.log("   ✓ /api/auth");
 
-// Community Routes
 const communityRoutes = require("./routes/community");
 app.use("/api/community", communityRoutes);
 console.log("   ✓ /api/community");
 
-// Schemes Routes
 const schemesRoutes = require("./routes/schemes");
 app.use("/api/schemes", schemesRoutes);
 console.log("   ✓ /api/schemes");
 
-// Jobs Routes (NEW - ADMIN PANEL)
 const jobsRoutes = require("./routes/jobs");
 app.use("/api/jobs", jobsRoutes);
 console.log("   ✓ /api/jobs");
@@ -78,7 +82,7 @@ app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
     path: req.path,
-    method: req.method
+    method: req.method,
   });
 });
 
@@ -86,31 +90,41 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   console.error("❌ Error:", err.message);
   res.status(err.status || 500).json({
-    error: err.message || "Internal Server Error"
+    error: err.message || "Internal Server Error",
   });
 });
 
-// ✅ START SERVER
+// ✅ CONNECT TO MONGODB, THEN START SERVER
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log("\n" + "=".repeat(70));
-  console.log("✅ SERVER STARTED SUCCESSFULLY");
-  console.log("=".repeat(70));
-  console.log(`🚀 Server running on: http://localhost:${PORT}`);
-  console.log(`🏥 Health Check: http://localhost:${PORT}/api/health`);
-  console.log(`\n📚 Available Routes:`);
-  console.log(`   Auth:      http://localhost:${PORT}/api/auth`);
-  console.log(`   Community: http://localhost:${PORT}/api/community`);
-  console.log(`   Schemes:   http://localhost:${PORT}/api/schemes`);
-  console.log(`   Jobs:      http://localhost:${PORT}/api/jobs (ADMIN)`);
-  console.log("=".repeat(70) + "\n");
-});
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => {
+    console.log("\n✅ MongoDB Connected successfully");
+
+    app.listen(PORT, () => {
+      console.log("\n" + "=".repeat(70));
+      console.log("✅ SERVER STARTED SUCCESSFULLY");
+      console.log("=".repeat(70));
+      console.log(`🚀 Server running on: http://localhost:${PORT}`);
+      console.log(`🏥 Health Check: http://localhost:${PORT}/api/health`);
+      console.log(`\n📚 Available Routes:`);
+      console.log(`   Auth:      http://localhost:${PORT}/api/auth`);
+      console.log(`   Community: http://localhost:${PORT}/api/community`);
+      console.log(`   Schemes:   http://localhost:${PORT}/api/schemes`);
+      console.log(`   Jobs:      http://localhost:${PORT}/api/jobs (ADMIN)`);
+      console.log("=".repeat(70) + "\n");
+    });
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB Connection Error:", err.message);
+    process.exit(1);
+  });
 
 // ✅ GRACEFUL SHUTDOWN
-process.on("SIGTERM", () => {
+process.on("SIGTERM", async () => {
   console.log("⏹️  Server shutting down gracefully...");
-  mongoose.connection.close();
+  await mongoose.connection.close();
   process.exit(0);
 });
 

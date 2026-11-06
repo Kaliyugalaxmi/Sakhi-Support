@@ -1,25 +1,28 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const Scheme = require("./models/Scheme");
 const schemesData = require("./schemes_dataset.json");
-require("dotenv").config();
+
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  process.env.MONGO_URI ||
+  "mongodb://127.0.0.1:27017/sakhi-support";
 
 const importSchemes = async () => {
   try {
-    // Connect to MongoDB
-await mongoose.connect("mongodb://127.0.0.1:27017/sakhi-support");    console.log("✅ MongoDB Connected");
+    await mongoose.connect(MONGODB_URI);
+    console.log("✅ MongoDB Connected");
 
-    // Clear existing schemes (optional - remove if you want to keep existing data)
     await Scheme.deleteMany({});
     console.log("🗑️  Cleared existing schemes");
 
-    // Insert new schemes
     const schemes = await Scheme.insertMany(schemesData);
     console.log(`✅ Successfully imported ${schemes.length} schemes`);
 
-    // Show summary
     const counts = await Scheme.aggregate([
       { $group: { _id: "$category", count: { $sum: 1 } } },
-      { $sort: { count: -1 } }
+      { $sort: { count: -1 } },
     ]);
 
     console.log("\n📊 Schemes by Category:");
