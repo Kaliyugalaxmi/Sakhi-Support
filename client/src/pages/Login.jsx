@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 export default function Login({ onLoginSuccess = null }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -23,7 +25,7 @@ export default function Login({ onLoginSuccess = null }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${BASE}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -34,9 +36,9 @@ export default function Login({ onLoginSuccess = null }) {
       if (res.ok) {
         // Call parent callback instead of localStorage
         if (onLoginSuccess) {
-          onLoginSuccess({ 
-            name: data.name || data.user?.name || "User", 
-            token: data.token 
+          onLoginSuccess({
+            name: data.name || data.user?.name || "User",
+            token: data.token,
           });
         }
 
@@ -80,7 +82,7 @@ export default function Login({ onLoginSuccess = null }) {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body, #root { width: 100%; height: 100%; overflow-x: hidden; overflow-y: hidden; }
+        html, body, #root { width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto; }
         :root {
           --teal: #1a6b5a; --teal-d: #134f42; --teal-m: #22896f;
           --teal-l: #c8e6dc; --teal-p: #ebf6f2; --sand: #e8a96a;
@@ -108,7 +110,7 @@ export default function Login({ onLoginSuccess = null }) {
         }
       `}</style>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", height: "100vh" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", minHeight: "100vh" }}>
 
         {/* ── LEFT PANEL ── */}
         <div style={{
@@ -233,8 +235,8 @@ export default function Login({ onLoginSuccess = null }) {
               {/* Forgot */}
               <div style={{ textAlign: "right" }}>
                 <button type="button" style={{ background: "none", border: "none", color: "var(--teal)", cursor: "pointer", fontSize: "0.85rem", fontWeight: 600, transition: "color 0.2s ease" }}
-                  onMouseEnter={(e) => e.target.style.color = "var(--teal-d)"}
-                  onMouseLeave={(e) => e.target.style.color = "var(--teal)"}>
+                  onMouseEnter={(e) => (e.target.style.color = "var(--teal-d)")}
+                  onMouseLeave={(e) => (e.target.style.color = "var(--teal)")}>
                   Forgot password?
                 </button>
               </div>
@@ -256,8 +258,8 @@ export default function Login({ onLoginSuccess = null }) {
               <p style={{ fontSize: "0.9rem", color: "var(--ink-m)", lineHeight: 1.6 }}>
                 Don't have an account?{" "}
                 <button onClick={() => navigate("/register")} style={{ background: "none", border: "none", color: "var(--teal)", fontWeight: 700, cursor: "pointer", fontSize: "0.9rem", transition: "color 0.2s ease" }}
-                  onMouseEnter={(e) => e.target.style.color = "var(--teal-d)"}
-                  onMouseLeave={(e) => e.target.style.color = "var(--teal)"}>
+                  onMouseEnter={(e) => (e.target.style.color = "var(--teal-d)")}
+                  onMouseLeave={(e) => (e.target.style.color = "var(--teal)")}>
                   Join us today
                 </button>
               </p>
