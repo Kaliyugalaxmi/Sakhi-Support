@@ -1,7 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Vercel par VITE_API_URL set karna zaroori hai (bina last "/" ke)
 const BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+const getFieldError = (field, value) => {
+  if (field === "email") {
+    if (!value.trim()) return "Email is required";
+    if (!validateEmail(value)) return "Please enter a valid email";
+  }
+  if (field === "password") {
+    if (!value.trim()) return "Password is required";
+    if (value.length < 6) return "Password must be at least 6 characters";
+  }
+  return null;
+};
 
 export default function Login({ onLoginSuccess = null }) {
   const navigate = useNavigate();
@@ -13,13 +28,38 @@ export default function Login({ onLoginSuccess = null }) {
   const [touched, setTouched] = useState({});
   const [success, setSuccess] = useState(false);
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const values = { email, password };
+
+  const setFieldError = (field, value) => {
+    const err = getFieldError(field, value);
+    setErrors((prev) => {
+      const next = { ...prev };
+      if (err) next[field] = err;
+      else delete next[field];
+      return next;
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    ["email", "password"].forEach((f) => {
+      const err = getFieldError(f, values[f]);
+      if (err) newErrors[f] = err;
+    });
+    // Submit par dono fields "touched" mark karo taaki errors dikhein
+    setTouched({ email: true, password: true });
+    setErrors((prev) => ({ form: prev.form, ...newErrors }));
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleBlur = (field) => {
+    setTouched((t) => ({ ...t, [field]: true }));
+    setFieldError(field, values[field]);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setErrors((prev) => ({ ...prev, form: undefined }));
     if (!validateForm()) return;
 
     setLoading(true);
@@ -28,61 +68,74 @@ export default function Login({ onLoginSuccess = null }) {
       const res = await fetch(`${BASE}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: email.trim().toLowerCase(), password }),
       });
 
-      const data = await res.json();
+      let data = {};
+      try {
+        data = await res.json();
+      } catch {
+        // server ne JSON nahi bheja
+      }
 
       if (res.ok) {
-        // Call parent callback instead of localStorage
+        const userName = data.name || data.user?.name || "User";
+
+        // ✅ Token aur naam save karo (dashboard ke liye zaroori)
+        try {
+          if (data.token) localStorage.setItem("token", data.token);
+          localStorage.setItem("userName", userName);
+        } catch {
+          // localStorage block ho (private mode) to bhi aage badho
+        }
+
         if (onLoginSuccess) {
-          onLoginSuccess({
-            name: data.name || data.user?.name || "User",
-            token: data.token,
-          });
+          onLoginSuccess({ name: userName, token: data.token });
         }
 
         setSuccess(true);
         setTimeout(() => navigate("/dashboard"), 1400);
       } else {
         setLoading(false);
-        setErrors({ form: data.message || "Invalid email or password" });
+        setErrors({ form: data.message || data.error || "Invalid email or password" });
       }
     } catch {
       setLoading(false);
-      setErrors({ form: "Unable to connect. Please try again." });
+      setErrors({ form: "Unable to connect. Please try again in a minute." });
     }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!validateEmail(email)) {
-      newErrors.email = "Please enter a valid email";
-    }
-    if (!password.trim()) {
-      newErrors.password = "Password is required";
-    } else if (password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleBlur = (field) => {
-    setTouched({ ...touched, [field]: true });
-    validateForm();
   };
 
   const hasError = (field) => touched[field] && errors[field];
+
+  const inputStyle = (field) => ({
+    width: "100%", padding: "12px 14px", borderRadius: 10,
+    border: hasError(field) ? "1.5px solid var(--error)" : "1.5px solid var(--border)",
+    fontSize: "0.9rem", fontFamily: "'Plus Jakarta Sans', sans-serif",
+    background: "var(--white)", color: "var(--ink)", outline: "none", transition: "all 0.2s ease",
+  });
+
+  const focusIn = (e) => {
+    e.target.style.borderColor = "var(--teal-m)";
+    e.target.style.boxShadow = "0 0 0 3px rgba(26,107,90,0.1)";
+  };
+  const focusOut = (field) => (e) => {
+    handleBlur(field);
+    e.target.style.borderColor = "var(--border)";
+    e.target.style.boxShadow = "none";
+  };
+
+  const ErrorText = ({ field }) =>
+    hasError(field) ? (
+      <div className="error-message" role="alert" style={{ fontSize: "0.75rem", color: "var(--error)", marginTop: "0.4rem", fontWeight: 500 }}>
+        {errors[field]}
+      </div>
+    ) : null;
 
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#0d1c18", minHeight: "100vh", margin: 0, padding: 0 }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body, #root { width: 100%; height: 100%; overflow-x: hidden; overflow-y: auto; }
         :root {
           --teal: #1a6b5a; --teal-d: #134f42; --teal-m: #22896f;
           --teal-l: #c8e6dc; --teal-p: #ebf6f2; --sand: #e8a96a;
@@ -108,12 +161,20 @@ export default function Login({ onLoginSuccess = null }) {
           border: 2px solid rgba(255,255,255,0.3); border-top: 2px solid white;
           border-radius: 50%; animation: spin 0.8s linear infinite;
         }
+        .login-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; min-height: 100vh; }
+        @media (max-width: 900px) {
+          .login-grid { grid-template-columns: 1fr; }
+          .login-left { display: none !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .input-wrapper, .error-message, .success-icon { animation: none; }
+        }
       `}</style>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", width: "100%", minHeight: "100vh" }}>
+      <div className="login-grid">
 
         {/* ── LEFT PANEL ── */}
-        <div style={{
+        <div className="login-left" style={{
           background: "linear-gradient(135deg, #1a6b5a 0%, #134f42 100%)",
           color: "#fff", display: "flex", flexDirection: "column",
           justifyContent: "center", alignItems: "flex-start",
@@ -186,50 +247,58 @@ export default function Login({ onLoginSuccess = null }) {
             </div>
 
             {errors.form && (
-              <div style={{ background: "#fff0ee", border: "1px solid #f5c6cb", borderRadius: 10, padding: "10px 14px", marginBottom: "1rem", fontSize: "0.85rem", color: "var(--error)", fontWeight: 500 }}>
+              <div role="alert" style={{ background: "#fff0ee", border: "1px solid #f5c6cb", borderRadius: 10, padding: "10px 14px", marginBottom: "1rem", fontSize: "0.85rem", color: "var(--error)", fontWeight: 500 }}>
                 {errors.form}
               </div>
             )}
 
-            <form onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+            <form noValidate onSubmit={handleLogin} style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
 
               {/* Email */}
               <div className="input-wrapper">
-                <label style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--ink)", marginBottom: "0.5rem", letterSpacing: "0.02em", textTransform: "uppercase" }}>
+                <label htmlFor="email" style={{ display: "block", fontSize: "0.8rem", fontWeight: 600, color: "var(--ink)", marginBottom: "0.5rem", letterSpacing: "0.02em", textTransform: "uppercase" }}>
                   Email Address
                 </label>
                 <input
+                  id="email"
                   type="email"
+                  autoComplete="email"
                   placeholder="name@example.com"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: hasError("email") ? "1.5px solid var(--error)" : "1.5px solid var(--border)", fontSize: "0.9rem", fontFamily: "'Plus Jakarta Sans', sans-serif", background: "var(--white)", color: "var(--ink)", outline: "none", transition: "all 0.2s ease" }}
-                  onFocus={(e) => { e.target.style.borderColor = "var(--teal-m)"; e.target.style.boxShadow = "0 0 0 3px rgba(26,107,90,0.1)"; }}
-                  onBlur={(e) => { handleBlur("email"); e.target.style.borderColor = hasError("email") ? "var(--error)" : "var(--border)"; e.target.style.boxShadow = "none"; }}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (touched.email) setFieldError("email", e.target.value);
+                  }}
+                  style={inputStyle("email")}
+                  onFocus={focusIn}
+                  onBlur={focusOut("email")}
                 />
-                {hasError("email") && <div className="error-message" style={{ fontSize: "0.75rem", color: "var(--error)", marginTop: "0.4rem", fontWeight: 500 }}>{errors.email}</div>}
+                <ErrorText field="email" />
               </div>
 
               {/* Password */}
               <div className="input-wrapper">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-                  <label style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "0.02em", textTransform: "uppercase" }}>Password</label>
+                  <label htmlFor="password" style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "0.02em", textTransform: "uppercase" }}>Password</label>
                   <button type="button" onClick={() => setShowPassword(!showPassword)} style={{ background: "none", border: "none", color: "var(--teal)", cursor: "pointer", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
                 <input
+                  id="password"
                   type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
                   placeholder="Enter your password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  style={{ width: "100%", padding: "12px 14px", borderRadius: 10, border: hasError("password") ? "1.5px solid var(--error)" : "1.5px solid var(--border)", fontSize: "0.9rem", fontFamily: "'Plus Jakarta Sans', sans-serif", background: "var(--white)", color: "var(--ink)", outline: "none", transition: "all 0.2s ease" }}
-                  onFocus={(e) => { e.target.style.borderColor = "var(--teal-m)"; e.target.style.boxShadow = "0 0 0 3px rgba(26,107,90,0.1)"; }}
-                  onBlur={(e) => { handleBlur("password"); e.target.style.borderColor = hasError("password") ? "var(--error)" : "var(--border)"; e.target.style.boxShadow = "none"; }}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (touched.password) setFieldError("password", e.target.value);
+                  }}
+                  style={inputStyle("password")}
+                  onFocus={focusIn}
+                  onBlur={focusOut("password")}
                 />
-                {hasError("password") && <div className="error-message" style={{ fontSize: "0.75rem", color: "var(--error)", marginTop: "0.4rem", fontWeight: 500 }}>{errors.password}</div>}
+                <ErrorText field="password" />
               </div>
 
               {/* Forgot */}
@@ -257,7 +326,7 @@ export default function Login({ onLoginSuccess = null }) {
             <div style={{ marginTop: "1.8rem", paddingTop: "1.8rem", borderTop: "1px solid var(--border)", textAlign: "center" }}>
               <p style={{ fontSize: "0.9rem", color: "var(--ink-m)", lineHeight: 1.6 }}>
                 Don't have an account?{" "}
-                <button onClick={() => navigate("/register")} style={{ background: "none", border: "none", color: "var(--teal)", fontWeight: 700, cursor: "pointer", fontSize: "0.9rem", transition: "color 0.2s ease" }}
+                <button type="button" onClick={() => navigate("/register")} style={{ background: "none", border: "none", color: "var(--teal)", fontWeight: 700, cursor: "pointer", fontSize: "0.9rem", transition: "color 0.2s ease" }}
                   onMouseEnter={(e) => (e.target.style.color = "var(--teal-d)")}
                   onMouseLeave={(e) => (e.target.style.color = "var(--teal)")}>
                   Join us today
@@ -267,8 +336,6 @@ export default function Login({ onLoginSuccess = null }) {
           </div>
         </div>
       </div>
-
-      <style>{`@media (max-width: 900px) { div[style*="gridTemplateColumns"] { grid-template-columns: 1fr !important; } }`}</style>
     </div>
   );
 }
