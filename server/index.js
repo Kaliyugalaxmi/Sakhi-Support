@@ -53,8 +53,8 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
+// cors() middleware preflight (OPTIONS) requests khud sambhal leta hai
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // preflight requests ke liye
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
